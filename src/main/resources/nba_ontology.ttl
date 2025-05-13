@@ -1,0 +1,429 @@
+@prefix : <http://example.org/nba#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@base <http://example.org/nba#> .
+
+<http://example.org/nba> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/nba#arena_in_city
+:arena_in_city rdf:type owl:ObjectProperty ;
+               rdfs:domain :Arena ;
+               rdfs:range :City .
+
+
+###  http://example.org/nba#away_games
+:away_games rdf:type owl:ObjectProperty ;
+            owl:inverseOf :away_team .
+
+
+###  http://example.org/nba#away_team
+:away_team rdf:type owl:ObjectProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :Game ;
+           rdfs:range :Team .
+
+
+###  http://example.org/nba#city_in_state
+:city_in_state rdf:type owl:ObjectProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :City ;
+               rdfs:range :State .
+
+
+###  http://example.org/nba#coaches_team
+:coaches_team rdf:type owl:ObjectProperty ;
+              owl:inverseOf :has_coach ;
+              rdfs:domain :Team_Coach ;
+              rdfs:range :Team .
+
+
+###  http://example.org/nba#from_country
+:from_country rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain :Player ;
+              rdfs:range :Country .
+
+
+###  http://example.org/nba#has_arena
+:has_arena rdf:type owl:ObjectProperty ;
+           owl:inverseOf :home_arena_of ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain :Team ;
+           rdfs:range :Arena .
+
+
+###  http://example.org/nba#has_coach
+:has_coach rdf:type owl:ObjectProperty ;
+           rdfs:domain :Team ;
+           rdfs:range :Team_Coach .
+
+
+###  http://example.org/nba#has_general_manager
+:has_general_manager rdf:type owl:ObjectProperty ;
+                     owl:inverseOf :manages_team ;
+                     rdfs:domain :Team ;
+                     rdfs:range :Team_General_Manager .
+
+
+###  http://example.org/nba#has_owner
+:has_owner rdf:type owl:ObjectProperty ;
+           owl:inverseOf :owns_team ;
+           rdfs:domain :Team ;
+           rdfs:range :Team_Owner .
+
+
+###  http://example.org/nba#has_player
+:has_player rdf:type owl:ObjectProperty ;
+            owl:inverseOf :plays_for_team ;
+            rdfs:domain :Team ;
+            rdfs:range :Player .
+
+
+###  http://example.org/nba#has_school
+:has_school rdf:type owl:ObjectProperty ;
+            rdfs:domain :Player ;
+            rdfs:range :School .
+
+
+###  http://example.org/nba#home_arena_of
+:home_arena_of rdf:type owl:ObjectProperty ;
+               rdfs:domain :Arena ;
+               rdfs:range :Team .
+
+
+###  http://example.org/nba#home_games
+:home_games rdf:type owl:ObjectProperty ;
+            owl:inverseOf :home_team .
+
+
+###  http://example.org/nba#home_team
+:home_team rdf:type owl:ObjectProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain :Game ;
+           rdfs:range :Team .
+
+
+###  http://example.org/nba#located_in_city
+:located_in_city rdf:type owl:ObjectProperty ,
+                          owl:FunctionalProperty ;
+                 rdfs:domain :Team ;
+                 rdfs:range :City .
+
+
+###  http://example.org/nba#manages_team
+:manages_team rdf:type owl:ObjectProperty ;
+              rdfs:domain :Team_General_Manager ;
+              rdfs:range :Team .
+
+
+###  http://example.org/nba#officiated_by
+:officiated_by rdf:type owl:ObjectProperty ;
+               owl:inverseOf :officiates_game ;
+               rdfs:domain :Game ;
+               rdfs:range :Game_Official .
+
+
+###  http://example.org/nba#officiates_game
+:officiates_game rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Game_Official ;
+                 rdfs:range :Game .
+
+
+###  http://example.org/nba#owns_team
+:owns_team rdf:type owl:ObjectProperty ;
+           rdfs:domain :Team_Owner ;
+           rdfs:range :Team .
+
+
+###  http://example.org/nba#plays_for_team
+:plays_for_team rdf:type owl:ObjectProperty ;
+                rdfs:domain :Player ;
+                rdfs:range :Team .
+
+
+###  http://example.org/nba#plays_position
+:plays_position rdf:type owl:ObjectProperty ,
+                         owl:FunctionalProperty ;
+                rdfs:domain :Player ;
+                rdfs:range :Basketball_Position .
+
+
+###  http://example.org/nba#team_state
+:team_state rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain :Team ;
+            rdfs:range :State .
+
+###  http://example.org/nba#in_arena
+:in_arena rdf:type owl:ObjectProperty ;
+          rdfs:domain :Game ;
+          rdfs:range :Arena .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.org/nba#abbreviation
+:abbreviation rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Team ;
+              rdfs:range xsd:string .
+
+
+###  http://example.org/nba#arena_capacity
+:arena_capacity rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Arena ;
+                rdfs:range xsd:int .
+
+
+###  http://example.org/nba#arena_name
+:arena_name rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Arena ;
+            rdfs:range xsd:string .
+
+
+###  http://example.org/nba#birthdate
+:birthdate rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Player ;
+           rdfs:range xsd:dateTime .
+
+
+###  http://example.org/nba#city_name
+:city_name rdf:type owl:DatatypeProperty ;
+           rdfs:domain :City ;
+           rdfs:range xsd:string .
+
+
+###  http://example.org/nba#country_name
+:country_name rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Country ;
+              rdfs:range xsd:string .
+
+
+###  http://example.org/nba#first_and_last_name
+:first_and_last_name rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Person ;
+                     rdfs:range xsd:string .
+
+
+###  http://example.org/nba#first_name
+:first_name rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Person ;
+            rdfs:range xsd:string .
+
+
+###  http://example.org/nba#from_year
+:from_year rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Player ;
+           rdfs:range xsd:int .
+
+
+###  http://example.org/nba#full_name
+:full_name rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Team ;
+           rdfs:range xsd:string .
+
+
+###  http://example.org/nba#game_date
+:game_date rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Game ;
+           rdfs:range xsd:dateTime .
+
+
+###  http://example.org/nba#game_id
+:game_id rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Game ;
+         rdfs:range xsd:string .
+
+
+###  http://example.org/nba#height
+:height rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Player ;
+        rdfs:range xsd:string .
+
+
+###  http://example.org/nba#jersey_num
+:jersey_num rdf:type owl:DatatypeProperty ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :Game_Official
+                                        :Player
+                                      )
+                        ] ;
+            rdfs:range xsd:int .
+
+
+###  http://example.org/nba#last_name
+:last_name rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Person ;
+           rdfs:range xsd:string .
+
+
+###  http://example.org/nba#matchup
+:matchup rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Game ;
+         rdfs:range xsd:string .
+
+
+###  http://example.org/nba#nickname
+:nickname rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Team ;
+          rdfs:range xsd:string .
+
+
+###  http://example.org/nba#official_id
+:official_id rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Game_Official ;
+             rdfs:range xsd:string .
+
+
+###  http://example.org/nba#player_id
+:player_id rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Player ;
+           rdfs:range xsd:string .
+
+
+###  http://example.org/nba#position_name
+:position_name rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Basketball_Position ;
+               rdfs:range xsd:string .
+
+
+###  http://example.org/nba#school_name
+:school_name rdf:type owl:DatatypeProperty ;
+             rdfs:domain :School ;
+             rdfs:range xsd:string .
+
+
+###  http://example.org/nba#state_name
+:state_name rdf:type owl:DatatypeProperty ;
+            rdfs:domain :State ;
+            rdfs:range xsd:string .
+
+
+###  http://example.org/nba#team_id
+:team_id rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Team ;
+         rdfs:range xsd:string .
+
+
+###  http://example.org/nba#to_year
+:to_year rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Player ;
+         rdfs:range xsd:int .
+
+
+###  http://example.org/nba#weight
+:weight rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Player ;
+        rdfs:range xsd:float .
+
+
+###  http://example.org/nba#won_lost_by_away
+:won_lost_by_away rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Game ;
+                  rdfs:range xsd:string .
+
+
+###  http://example.org/nba#won_lost_by_home
+:won_lost_by_home rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Game ;
+                  rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/nba#Arena
+:Arena rdf:type owl:Class .
+
+
+###  http://example.org/nba#Basketball_Position
+:Basketball_Position rdf:type owl:Class .
+
+
+###  http://example.org/nba#City
+:City rdf:type owl:Class ;
+      rdfs:subClassOf dbo:City .
+
+
+###  http://example.org/nba#Country
+:Country rdf:type owl:Class ;
+         rdfs:subClassOf dbo:Country .
+
+
+###  http://example.org/nba#Game
+:Game rdf:type owl:Class .
+
+
+###  http://example.org/nba#Game_Official
+:Game_Official rdf:type owl:Class ;
+               rdfs:subClassOf :Person .
+
+
+###  http://example.org/nba#Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf foaf:Person .
+
+
+###  http://example.org/nba#Player
+:Player rdf:type owl:Class ;
+        rdfs:subClassOf :Person .
+
+
+###  http://example.org/nba#School
+:School rdf:type owl:Class .
+
+
+###  http://example.org/nba#State
+:State rdf:type owl:Class ;
+       rdfs:subClassOf dbo:Region .
+
+
+###  http://example.org/nba#Team
+:Team rdf:type owl:Class .
+
+
+###  http://example.org/nba#Team_Coach
+:Team_Coach rdf:type owl:Class ;
+            rdfs:subClassOf :Person .
+
+
+###  http://example.org/nba#Team_General_Manager
+:Team_General_Manager rdf:type owl:Class ;
+                      rdfs:subClassOf :Person .
+
+
+###  http://example.org/nba#Team_Owner
+:Team_Owner rdf:type owl:Class ;
+            rdfs:subClassOf :Person .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Arena
+                :Basketball_Position
+                :City
+                :Country
+                :Game
+                :Person
+                :School
+                :State
+                :Team
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

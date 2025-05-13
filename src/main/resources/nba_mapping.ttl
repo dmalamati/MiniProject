@@ -1,0 +1,406 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix : <http://example.org/nba#> .
+@prefix ex: <http://example.org/resource/> .
+@base <http://example.org/nba#> .
+
+# === TEAM mappings ===
+
+<#TeamTriplesMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "team.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/team/{team_id}" ;
+    rr:class :Team
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :team_id ;
+    rr:objectMap [ rml:reference "team_id" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :full_name ;
+    rr:objectMap [ rml:reference "full_name" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :abbreviation ;
+    rr:objectMap [ rml:reference "abbreviation" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :nickname ;
+    rr:objectMap [ rml:reference "nickname" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :located_in_city ;
+    rr:objectMap [ rr:template "http://example.org/resource/city/{city}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :team_state ;
+    rr:objectMap [ rr:template "http://example.org/resource/state/{state}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :has_arena ;
+    rr:objectMap [ rr:template "http://example.org/resource/arena/{arena}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :has_owner ;
+    rr:objectMap [ rr:template "http://example.org/resource/owner/{owner}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :has_coach ;
+    rr:objectMap [ rr:template "http://example.org/resource/coach/{head_coach}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :has_general_manager ;
+    rr:objectMap [ rr:template "http://example.org/resource/manager/{general_manager}" ]
+  ] .
+
+<#ArenaTriplesMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "team.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/arena/{arena}" ;
+    rr:class :Arena
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :arena_name ;
+    rr:objectMap [ rml:reference "arena" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :arena_capacity ;
+    rr:objectMap [ rml:reference "arena_capacity" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :arena_in_city ;
+    rr:objectMap [ rr:template "http://example.org/resource/city/{city}" ]
+  ] .
+
+<#CityTriplesMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "team.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/city/{city}" ;
+    rr:class :City
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :city_name ;
+    rr:objectMap [ rml:reference "city" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :city_in_state ;
+    rr:objectMap [ rr:template "http://example.org/resource/state/{state}" ]
+  ] .
+
+<#StateTriplesMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "team.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/state/{state}" ;
+    rr:class :State
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :state_name ;
+    rr:objectMap [ rml:reference "state" ]
+  ] .
+
+<#OwnerTriplesMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "team.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/owner/{owner}" ;
+    rr:class :Team_Owner
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :first_and_last_name ;
+    rr:objectMap [ rml:reference "owner" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :owns_team ;
+    rr:objectMap [ rr:template "http://example.org/resource/team/{team_id}" ]
+  ] .
+
+<#GeneralManagerTriplesMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "team.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/manager/{general_manager}" ;
+    rr:class :Team_General_Manager
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :first_and_last_name ;
+    rr:objectMap [ rml:reference "general_manager" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :manages_team ;
+    rr:objectMap [ rr:template "http://example.org/resource/team/{team_id}" ]
+  ] .
+
+<#CoachTriplesMap> a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "team.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/coach/{head_coach}" ;
+    rr:class :Team_Coach
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :first_and_last_name ;
+    rr:objectMap [ rml:reference "head_coach" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :coaches_team ;
+    rr:objectMap [ rr:template "http://example.org/resource/team/{team_id}" ]
+  ] .
+
+# === PLAYER mappings ===
+
+<#PlayerTriplesMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "player.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/player/{player_id}" ;
+    rr:class :Player
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :player_id ;
+    rr:objectMap [ rml:reference "player_id" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :first_name ;
+    rr:objectMap [ rml:reference "first_name" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :last_name ;
+    rr:objectMap [ rml:reference "last_name" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :birthdate ;
+    rr:objectMap [ rml:reference "birthdate" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :height ;
+    rr:objectMap [ rml:reference "height" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :weight ;
+    rr:objectMap [ rml:reference "weight" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :jersey_num ;
+    rr:objectMap [ rml:reference "jersey_num" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :from_year ;
+    rr:objectMap [ rml:reference "from_year" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :to_year ;
+    rr:objectMap [ rml:reference "to_year" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :has_school ;
+    rr:objectMap [ rr:template "http://example.org/resource/school/{school}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :from_country ;
+    rr:objectMap [ rr:template "http://example.org/resource/country/{country}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :plays_position ;
+    rr:objectMap [ rr:template "http://example.org/resource/position/{position}" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :plays_for_team ;
+    rr:objectMap [ rr:template "http://example.org/resource/team/{team_id}" ]
+  ] .
+
+<#SchoolTriplesMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "player.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/school/{school}" ;
+    rr:class :School
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :school_name ;
+    rr:objectMap [ rml:reference "school" ]
+  ] .
+
+<#CountryTriplesMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "player.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/country/{country}" ;
+    rr:class :Country
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :country_name ;
+    rr:objectMap [ rml:reference "country" ]
+  ] .
+
+<#BasketballPositionTriplesMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "player.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/position/{position}" ;
+    rr:class :Basketball_Position
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :position_name ;
+    rr:objectMap [ rml:reference "position" ]
+  ] .
+
+<#TeamTriplesMapFromPlayerCSV> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "player.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/team/{team_id}" ;
+    rr:class :Team
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :team_id ;
+    rr:objectMap [ rml:reference "team_id" ]
+  ] .
+
+# === GAME OFFICIAL mappings ===
+
+<#GameOfficialTriplesMap> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "officials.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/game_official/{official_id}" ;
+    rr:class :Game_Official
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :official_id ;
+    rr:objectMap [ rml:reference "official_id" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :first_name ;
+    rr:objectMap [ rml:reference "first_name" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :last_name ;
+    rr:objectMap [ rml:reference "last_name" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :jersey_num ;
+    rr:objectMap [ rml:reference "jersey_num" ]
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :officiates_game ;
+    rr:objectMap [
+      rr:template "http://example.org/resource/game/{game_id}"
+    ]
+  ] .
+
+<#GameTriplesMapFromGameOfficialCSV> a rr:TriplesMap ;
+  rml:logicalSource [
+    rml:source "officials.csv" ;
+    rml:referenceFormulation ql:CSV
+  ] ;
+  rr:subjectMap [
+    rr:template "http://example.org/resource/game/{game_id}" ;
+    rr:class :Game
+  ] ;
+  rr:predicateObjectMap [
+    rr:predicate :game_id ;
+    rr:objectMap [ rml:reference "game_id" ]
+  ] .
+
+# === GAME mappings ===
+
+<#GameTriplesMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "game.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    rr:subjectMap [
+        rr:template "http://example.org/resource/game/{game_id}" ;
+        rr:class :Game
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate :game_id ;
+        rr:objectMap [ rml:reference "game_id" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate :game_date ;
+        rr:objectMap [ rml:reference "game_date" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate :matchup ;
+        rr:objectMap [ rml:reference "matchup_home" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate :won_lost_by_home ;
+        rr:objectMap [ rml:reference "wl_home" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate :won_lost_by_away ;
+        rr:objectMap [ rml:reference "wl_away" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate :home_team ;
+        rr:objectMap [
+            rr:template "http://example.org/resource/team/{team_id_home}"
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate :away_team ;
+        rr:objectMap [
+            rr:template "http://example.org/resource/team/{team_id_away}"
+        ]
+    ] .
+
+<#TeamHomeTriplesMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "game.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    rr:subjectMap [
+        rr:template "http://example.org/resource/team/{team_id_home}" ;
+        rr:class :Team
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate :team_id ;
+        rr:objectMap [ rml:reference "team_id_home" ]
+    ] .
+
+<#TeamAwayTriplesMap> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "game.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    rr:subjectMap [
+        rr:template "http://example.org/resource/team/{team_id_away}" ;
+        rr:class :Team
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate :team_id ;
+        rr:objectMap [ rml:reference "team_id_away" ]
+    ] .
