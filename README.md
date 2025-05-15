@@ -8,18 +8,18 @@ By defining rich semantic relationships among these entities, we create a struct
 
 **Key Features**
 
--- Ontology-Driven Design: All data is modeled using an ontology that captures the domain semantics of basketball.
+- Ontology-Driven Design: All data is modeled using an ontology that captures the domain semantics of basketball.
 
--- Data Integration: Aggregates heterogeneous sources (teams, players, games, arenas) into a unified, queryable format.
+- Data Integration: Aggregates heterogeneous sources (teams, players, games, arenas) into a unified, queryable format.
 
--- Semantic Querying with SPARQL: Supports advanced queries such as
+- Semantic Querying with SPARQL: Supports advanced queries such as
 "Which team won the most games in the 2019–20 NBA season?"
 or
 "Who were the referees in a specific match?"
 
--- Reasoning Support: Reveals implicit facts by modeling indirect relationships (e.g., inferring referee assignments from game metadata).
+- Reasoning Support: Reveals implicit facts by modeling indirect relationships (e.g., inferring referee assignments from game metadata).
 
--- Explainability & Traceability: All answers and inferences can be traced back through the graph, ensuring transparency and justification.
+- Explainability & Traceability: All answers and inferences can be traced back through the graph, ensuring transparency and justification.
 
 **Why Use a Knowledge Graph?**
 
