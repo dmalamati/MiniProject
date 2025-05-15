@@ -1,4 +1,5 @@
-🏀 Knowledge Graph for Basketball Analytics
+🏀 **Knowledge Graph for Basketball Analytics**
+
 This project constructs a Knowledge Graph that semantically models key concepts in professional basketball—such as teams, players, officials, and arenas—using a custom-built ontology and RDF data.
 
 📌 Overview
