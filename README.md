@@ -22,9 +22,8 @@ Explainability & Traceability: All answers and inferences can be traced back thr
 🧠 Why Use a Knowledge Graph?
 This approach transforms raw sports statistics into a semantic network that is:
 
-Navigable – Easy to explore using linked relationships
+  1. Navigable – Easy to explore using linked relationships
 
-Interpretable – Understandable by humans and machines
+  2. Interpretable – Understandable by humans and machines
 
-Extensible – Easily supports additional data or concepts
-
+  3. Extensible – Easily supports additional data or concepts
