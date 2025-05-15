@@ -20,6 +20,7 @@ Reasoning Support: Reveals implicit facts by modeling indirect relationships (e.
 Explainability & Traceability: All answers and inferences can be traced back through the graph, ensuring transparency and justification.
 
 **Why Use a Knowledge Graph?**
+
 This approach transforms raw sports statistics into a semantic network that is:
 
   1. Navigable – Easy to explore using linked relationships
