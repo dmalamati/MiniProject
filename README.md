@@ -2,6 +2,14 @@
 
 This project constructs a Knowledge Graph that semantically models key concepts in professional basketball—such as teams, players, officials, and arenas—using a custom-built ontology and RDF data.
 
+<div align="center">
+  <a href="https://github.com/dmalamati/UniChatbot">
+    <img src="nba_ontology.png">
+  </a>
+
+  <h3 align="center">UniChatbot</h3>
+</div>
+
 **Overview**
 
 By defining rich semantic relationships among these entities, we create a structured, interoperable representation of basketball knowledge. The graph allows for both exploratory queries and implicit reasoning, enabling insights that go beyond raw data.
