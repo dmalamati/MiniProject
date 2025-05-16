@@ -7,7 +7,7 @@ This project constructs a Knowledge Graph that semantically models key concepts 
     <img src="nba_ontology.png">
   </a>
 
-  <h3 align="center">UniChatbot</h3>
+  <h3 align="center">Partial Visualization of Ontology</h3>
 </div>
 
 **Overview**
